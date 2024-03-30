@@ -1,7 +1,6 @@
 info:
   icon: "symbol:textformat"
   name: XcodeFormat
-  enabled: true
 actions:
   - meta:
       title: XcodeFormat

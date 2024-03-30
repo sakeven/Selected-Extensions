@@ -2,6 +2,7 @@ info:
   icon: "symbol:character.bubble"
   name: AIChat
   enabled: true
+  description: "AIChat is an extension for communicating with AI, allowing users to directly inquire OpenAI or Gemini's GPT by selecting text."
 actions:
   - meta:
       title: AIChat

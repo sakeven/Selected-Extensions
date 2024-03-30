@@ -1,8 +1,8 @@
 info:
   icon: square AC
   name: Auto Correct
-  enabled: true
   type: url
+  description: improve copywriting, correct spaces, words, and punctuations between CJK (Chinese, Japanese, Korean).
 actions:
   - meta:
       title: Auto Correct

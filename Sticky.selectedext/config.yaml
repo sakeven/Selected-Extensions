@@ -1,7 +1,6 @@
 info:
   icon: symbol:note
   name: Make New Sticky
-  enabled: true
 actions:
   - meta:
       title: Sticky
