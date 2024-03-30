@@ -1,0 +1,12 @@
+info:
+  icon: symbol:note
+  name: Make New Sticky
+  enabled: true
+actions:
+  - meta:
+      title: Sticky
+      icon: symbol:note
+      identifier: selected.sticky
+      after: ""
+    service:
+      name: Make Sticky

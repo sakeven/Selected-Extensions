@@ -1,0 +1,15 @@
+info:
+  icon: square us
+  name: ParseUnixTimeStamp
+  enabled: true
+actions:
+  - meta:
+      title: ParseUnixTimeStamp
+      icon: square us
+      identifier: selected.parse_uts
+      after: "copy"
+      regex: "[0-9]+"
+    runCommand:
+      command:
+        - /bin/zsh
+        - parse.sh

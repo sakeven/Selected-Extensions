@@ -1,0 +1,12 @@
+info:
+  icon: "symbol:character.bubble"
+  name: AIChat
+  enabled: true
+actions:
+  - meta:
+      title: AIChat
+      icon: "symbol:character.bubble"
+      identifier: selected.aichat
+      after: ""
+    gpt:
+      prompt: "{text}"

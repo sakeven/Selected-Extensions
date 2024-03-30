@@ -1,0 +1,14 @@
+info:
+  icon: square AC
+  name: Auto Correct
+  enabled: true
+  type: url
+actions:
+  - meta:
+      title: Auto Correct
+      icon: square AC
+      identifier: selected.autocorrent
+      after: "paste"
+    runCommand:
+      command:
+        - run.sh

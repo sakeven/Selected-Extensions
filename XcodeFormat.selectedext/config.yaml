@@ -1,0 +1,12 @@
+info:
+  icon: "symbol:textformat"
+  name: XcodeFormat
+  enabled: true
+actions:
+  - meta:
+      title: XcodeFormat
+      icon: "symbol:textformat"
+      identifier: selected.xcode.format
+      after: ""
+    keycombo:
+      keycombo: "ctr i"
