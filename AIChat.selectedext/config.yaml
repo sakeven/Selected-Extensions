@@ -10,4 +10,4 @@ actions:
       identifier: selected.aichat
       after: ""
     gpt:
-      prompt: "{text}"
+      prompt: "{selected.text}"

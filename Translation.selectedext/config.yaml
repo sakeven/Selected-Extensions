@@ -1,0 +1,24 @@
+info:
+  icon: "symbol:character"
+  name: Translation
+  enabled: true
+  description: "Translation is an extension that uses AI to translate selected text."
+  options:
+    - identifier: language
+      type: multiple
+      defaultVal: English
+      values:
+        - English
+        - Chinese
+        - Japanese
+        - French
+        - Spanish
+        - German
+actions:
+  - meta:
+      title: Translation
+      icon: "symbol:character"
+      identifier: selected.translation
+      after: ""
+    gpt:
+      prompt: "Translate the following content into {selected.options.language}. The content is：{selected.text}"
