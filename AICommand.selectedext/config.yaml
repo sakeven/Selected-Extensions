@@ -1,0 +1,34 @@
+info:
+  icon: "symbol:apple.terminal.on.rectangle"
+  name: AICommand
+  enabled: true
+  description: "AICommand is an extension which converts natural language to shell commands."
+  options:
+    - identifier: shell
+      type: multiple
+      defaultVal: zsh
+      values:
+        - zsh
+        - bash
+    - identifier: os
+      type: multiple
+      defaultVal: macOS
+      values:
+        - macOS
+        - Linux
+        - Windows
+        - FreeBSD
+        - OpenBSD
+actions:
+  - meta:
+      title: AICommand
+      icon: "symbol:apple.terminal.on.rectangle"
+      identifier: selected.aicommand
+      after: ""
+    gpt:
+      prompt:
+        "Create a single line command that one can enter in a terminal and run, based on what is specified in the prompt.
+        The target shell is zsh. Only reply with the single line command surrounded by three backticks.
+        It must be able to be directly run in the target shell. Do not include any other text.
+        Make sure the command runs on macOS operating system.
+        The prompt is: {selected.text}"
