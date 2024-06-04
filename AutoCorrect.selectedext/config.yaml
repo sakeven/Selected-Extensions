@@ -11,4 +11,5 @@ actions:
       after: "paste"
     runCommand:
       command:
+        - /bin/zsh
         - run.sh

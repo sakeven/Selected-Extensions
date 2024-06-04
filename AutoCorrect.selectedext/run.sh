@@ -1,3 +1,3 @@
 #!/bin/zsh
 
-echo "{SELECTED_TEXT}" | autocorrect --stdin
+echo "${SELECTED_TEXT}" | autocorrect --stdin
