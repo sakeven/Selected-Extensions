@@ -1,10 +1,10 @@
 info:
   icon: square us
-  name: ParseUnixTimeStamp
+  name: UnixTimeStamp
   description: UnixTimestamp is an extension used to convert Unix timestamps into dates.
 actions:
   - meta:
-      title: ParseUnixTimeStamp
+      title: UnixTimeStamp
       icon: square us
       identifier: selected.parse_uts
       after: "show"
