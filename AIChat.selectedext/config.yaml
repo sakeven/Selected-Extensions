@@ -3,6 +3,13 @@ info:
   name: AIChat
   enabled: true
   description: "AIChat is an extension for communicating with AI, allowing users to directly inquire OpenAI or Gemini's GPT by selecting text."
+  options:
+    - identifier: search_token
+      type: secret
+      defaultVal: ""
+    - identifier: search_url
+      type: string
+      defaultVal: "http://search.com/"
 actions:
   - meta:
       title: AIChat
@@ -11,3 +18,18 @@ actions:
       after: ""
     gpt:
       prompt: "{selected.text}"
+      tools:
+        - name: search
+          description: If there is anything you are not clear about or do not understand, use this tool to search online. The body of returned response is shot, so call crawler to get all content if needed.
+          parameters: '{"type":"object","properties":{"query":{"type":"string","description":"things to search. The query should use the language of the prompt rather than always being in English."}},"required":["query"]}'
+          command: ["./search.sh"]
+          showResult: false
+        - name: get_current_weather
+          description: Get the current weather in a given location.
+          parameters: '{"type":"object","properties":{"location":{"type":"string","description":"The city, e.g. SanFrancisco, 杭州"}},"required":["location"]}'
+          command: ["./weather.sh"]
+        - name: crawler
+          description: Get the content of a specified url.
+          parameters: '{"type":"object","properties":{"url":{"type":"string","description":"The URL of the webpage"}},"required":["url"]}'
+          command: ["./crawler.sh"]
+          showResult: false

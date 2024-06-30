@@ -4,13 +4,12 @@ Extension repository of Selected App
 
 # List
 
-* [AIChat](AIChat.selectedext) is an extension for communicating with AI, allowing users to directly inquire OpenAI or Gemini's GPT by selecting text.
+* [AIChat](AIChat.selectedext) is an extension for communicating with AI, allowing users to directly inquire OpenAI or Gemini's GPT by selecting text. Requires Selected app v0.2.2-beta12.
 * [AICommand](AICommand.selectedext) is an extension which converts natural language to shell commands.
 * [AutoCorrect](AutoCorrect.selectedext) is a linter and formatter to help you to improve copywriting, correct spaces, words, and punctuations between CJK (Chinese, Japanese, Korean).
 * [Sticky](Sticky.selectedext) is an extension for creating sticky notes.
 * [Translation](Translation.selectedext) is an extension that uses AI to translate selected text."
 * [UnixTimestamp](UnixTimestamp.selectedext) is an extension used to convert Unix timestamps into dates.
-* [WeatherAI](WeatherAI.selectedext) is an extension for asking AI about the weather.
 * [XcodeFormat](XcodeFormat.selectedext) is an extension that formats Xcode code by executing ctr-i.
 
 # Install
