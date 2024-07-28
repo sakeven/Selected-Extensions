@@ -9,7 +9,7 @@ info:
       defaultVal: ""
     - identifier: search_url
       type: string
-      defaultVal: "http://search.com/"
+      defaultVal: "https://search.com/"
 actions:
   - meta:
       title: AIChat
@@ -17,19 +17,58 @@ actions:
       identifier: selected.aichat
       after: ""
     gpt:
-      prompt: "{selected.text}"
+      prompt: 'Current application is {{ selected.bundleID }}. {%+ if selected.webPageURL != "" %} Current web page is {{ selected.webPageURL }} . {%+ endif %} {{ selected.text }}'
       tools:
         - name: search
           description: If there is anything you are not clear about or do not understand, use this tool to search online. The body of returned response is shot, so call crawler to get all content if needed.
           parameters: '{"type":"object","properties":{"query":{"type":"string","description":"things to search. The query should use the language of the prompt rather than always being in English."}},"required":["query"]}'
           command: ["./search.sh"]
           showResult: false
+          template: '
+            {% if system.language == "中文" %}
+            查询 **{{ query }}**.
+            {% else %}
+            query **{{ query }}**.
+            {% endif %}
+            '
         - name: get_current_weather
           description: Get the current weather in a given location.
           parameters: '{"type":"object","properties":{"location":{"type":"string","description":"The city, e.g. SanFrancisco, 杭州"}},"required":["location"]}'
           command: ["./weather.sh"]
-        - name: crawler
+        - name: remote_crawler
           description: Get the content of a specified url.
           parameters: '{"type":"object","properties":{"url":{"type":"string","description":"The URL of the webpage"}},"required":["url"]}'
-          command: ["./crawler.sh"]
+          command: ["./remote_crawler.sh"]
+          showResult: false
+        - name: local_crawler
+          description: If the currently running application is Chrome and you need to extract specific text content from the current web page, you can invoke local_crawler. Otherwise, please use remote_crawler.
+          parameters: '{"type":"object","properties":{"current":{"type":"boolean","description":""}},"required":[]}'
+          command: ["./local_crawler.sh"]
+          showResult: false
+        - name: runner
+          description:
+            "Run python or bash script on macOS to do some tasks, such as reading files on macOS or getting ip address. The stdout or stderr of script will be returned.
+            If you need to create or generate files, please generate them in the tmp directory.
+            Note:
+            1. the script IS NOT ALLOWED to have stdin during execution, otherwise it will not be able to exit.
+            2. Runner **does not** support interactive input/output. You can echo some data as input if needed.
+            3. Only write script if needed. If you want to display some codes, just show it instead of calling runner.
+            4. IMPORTANT: **MUST NOT** call runner to just print some codes.
+            "
+          parameters: '{"type":"object","properties":{"script":{"type":"string","description":"The content of script"}, "language":{"type":"string","enum": ["python", "shell"], "description":"The language of script, such as python, shell, default is python"}},"required":["script"]}'
+          command: ["python3", "./run.py"]
+          template: '
+            {% if system.language == "中文" %}
+            运行代码：
+            {% else %}
+            Run code:
+            {% endif +%}
+
+
+            ```{{ language }}
+
+            {{ script }}
+
+            ```
+            '
           showResult: false
