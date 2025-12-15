@@ -1,11 +1,18 @@
-import sys
 import json
 import logging
+import os
 import subprocess
+import sys
 
 
 def execute_shell_script(script_code):
-    process = subprocess.Popen(script_code, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    process = subprocess.Popen(
+        script_code,
+        shell=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+    )
     stdout, stderr = process.communicate()
 
     if stdout:
@@ -15,11 +22,13 @@ def execute_shell_script(script_code):
 
     sys.exit(process.returncode)
 
+
 def execute_script(script_code):
     try:
         exec(script_code)
     except Exception as e:
         print(f"Error executing script: {e}")
+
 
 def main():
     if len(sys.argv) != 2:
@@ -29,8 +38,8 @@ def main():
     json_string = sys.argv[1]
     try:
         json_data = json.loads(json_string)
-        script_code = json_data.get('script')
-        language = json_data.get('language', "python")
+        script_code = json_data.get("script")
+        language = json_data.get("language", "python")
         if script_code:
             logging.info(f"Executing script: \n{script_code}")
             if language == "python":
@@ -43,8 +52,7 @@ def main():
         print(f"Invalid JSON input: {e}")
 
 
-import os
-os.environ["PATH"] = os.environ["PATH"]+":/Users/sake/.cargo/bin/"
+os.environ["PATH"] = os.environ["PATH"] + ":/Users/sake/.cargo/bin/"
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

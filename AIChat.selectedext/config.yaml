@@ -19,18 +19,6 @@ actions:
     gpt:
       prompt: 'Current application is {{ selected.bundleID }}. {%+ if selected.webPageURL != "" %} Current web page is {{ selected.webPageURL }} . {%+ endif %} {{ selected.text }}'
       tools:
-        - name: search
-          description: If there is anything you are not clear about or do not understand, use this tool to search online. The body of returned response is shot, so call crawler to get all content if needed.
-          parameters: '{"type":"object","properties":{"query":{"type":"string","description":"things to search. The query should use the language of the prompt rather than always being in English."}},"required":["query"]}'
-          command: ["./search.sh"]
-          showResult: false
-          template: '
-            {% if system.language == "中文" %}
-            查询 **{{ query }}**.
-            {% else %}
-            query **{{ query }}**.
-            {% endif %}
-            '
         - name: get_current_weather
           description: Get the current weather in a given location.
           parameters: '{"type":"object","properties":{"location":{"type":"string","description":"The city, e.g. SanFrancisco, 杭州"}},"required":["location"]}'
